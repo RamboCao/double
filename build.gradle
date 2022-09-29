@@ -80,5 +80,9 @@ configure(allprojects.findAll { it.subprojects.empty }){
         implementation "mysql:mysql-connector-java:${mysqlConnectorVersion}"
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
+        //lombok
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+
     }
 }
