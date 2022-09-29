@@ -1,0 +1,84 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.14.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:2.6.4"
+    }
+
+}
+
+apply plugin: 'base'
+apply plugin: 'java'
+apply from: "$rootDir/ext.gradle".toString()
+print(rootDir)
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+
+}
+
+configure(allprojects.findAll { it.subprojects.empty }) {
+
+    group 'org.star'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    dependencyManagement {
+        imports {
+            mavenBom(SpringBootPlugin.BOM_COORDINATES)
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+
+    javadoc {
+        options.charSet = 'utf8'
+        options.encoding = 'utf8'
+        options.docEncoding = 'utf8'
+        options.memberLevel = JavadocMemberLevel.PRIVATE
+    }
+
+    // 生成source包的task
+    task noVersionSourceJar(type: Jar, dependsOn: classes) {
+        manifest.attributes provider: 'gradle'
+        manifest.attributes groupName: 'org.star'
+        manifest.attributes projectName: project.name
+        manifest.attributes version: '1.0-SNAPSHOT'
+        group = 'build'
+        classifier = 'sources'
+        archiveName = 'stariboss-' + project.name + '-source.jar'
+        from sourceSets.main.allSource
+    }
+
+}
+
+configure(allprojects.findAll { it.subprojects.empty }){
+    dependencies {
+        implementation "org.springframework.boot:spring-boot-starter"
+        implementation "org.springframework.boot:spring-boot-starter-tomcat"
+        implementation "org.springframework.boot:spring-boot-starter-web"
+        implementation "org.springframework.boot:spring-boot-starter-actuator"
+        implementation 'org.springframework.cloud:spring-cloud-context'
+        implementation 'org.springframework.boot:spring-boot-starter-jersey'
+        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    }
+}

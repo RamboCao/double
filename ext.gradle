@@ -1,0 +1,6 @@
+// 定义全局变量
+ext {
+//    set('springCloudVersion', "Hoxton.SR8")
+    springCloudVersion = '2021.0.4'
+    mysqlConnectorVersion = '8.0.30'
+}
