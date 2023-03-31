@@ -1,3 +1,4 @@
 rootProject.name = 'double'
 include 'service:customer-service'
 include 'service:order-service'
+include 'service:open-ai'
