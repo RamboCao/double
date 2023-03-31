@@ -15,6 +15,6 @@ import java.util.List;
 @ToString
 public class ChatRequest {
 
-    private List<Message> message;
+    private String message;
 
 }
