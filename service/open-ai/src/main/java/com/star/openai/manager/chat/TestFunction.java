@@ -1,4 +1,4 @@
-package com.star.openai.manager;
+package com.star.openai.manager.chat;
 
 
 import com.plexpt.chatgpt.ChatGPTStream;

@@ -1,8 +1,11 @@
 package com.star.openai.domain.chat;
 
+import com.plexpt.chatgpt.entity.chat.Message;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.util.List;
 
 /**
  * @author caolp
@@ -12,6 +15,6 @@ import lombok.ToString;
 @ToString
 public class ChatRequest {
 
-    private String message;
+    private List<Message> message;
 
 }
