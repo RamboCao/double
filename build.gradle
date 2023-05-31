@@ -67,7 +67,38 @@ configure(allprojects.findAll { it.subprojects.empty }) {
 
 }
 
-configure(allprojects.findAll { it.subprojects.empty }){
+def all_only_jar_subject = []
+def all_ext_subject = []
+def all_ui_subject = []
+def all_service_subject = []
+def all_api_subject = []
+
+subprojects.each {
+    if (it.subprojects.empty && (it.name.endsWith('-api') || it.name.startsWith('platform-'))) {
+        all_only_jar_subject << it
+    }
+    if (it.subprojects.empty && (!it.name.endsWith('-api') && !it.name.startsWith('platform-'))) {
+        all_ext_subject << it
+    }
+    if (it.name.endsWith('-ui')) {
+        all_ui_subject << it
+    }
+    if (it.subprojects.empty && it.name.endsWith('-service') && !it.name.startsWith('api-')) {
+        all_service_subject << it
+    }
+    if (it.name.endsWith('-api')) {
+        all_api_subject << it
+    }
+}
+configure(all_only_jar_subject) {
+    //自动分层打包docker插件,作用是在打包时，自动打包层分好层的jar包
+    jar {
+        enabled = true
+    }
+    bootJar { enabled = false }
+}
+
+configure(all_service_subject){
     dependencies {
         implementation "org.springframework.boot:spring-boot-starter"
         implementation "org.springframework.boot:spring-boot-starter-tomcat"
@@ -75,12 +106,14 @@ configure(allprojects.findAll { it.subprojects.empty }){
         implementation "org.springframework.boot:spring-boot-starter-actuator"
         implementation 'org.springframework.cloud:spring-cloud-context'
         implementation 'org.springframework.boot:spring-boot-starter-jersey'
+        // 引入 openfeign
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation "mysql:mysql-connector-java:${mysqlConnectorVersion}"
         implementation group: 'com.github.plexpt', name: 'chatgpt', version: '4.0.5'
 
         annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+        testImplementation "org.mockito:mockito-core:${mockitoVersion}"
 
         //lombok
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"

@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerService implements ICustomerService{
+public class CustomerService implements ICustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
-
 
     @Override
     public Customer save(Customer customer) {

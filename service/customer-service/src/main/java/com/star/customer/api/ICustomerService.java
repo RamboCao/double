@@ -1,22 +1,32 @@
 package com.star.customer.api;
 
 import com.star.customer.domain.Customer;
-import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("customer/")
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+
+/**
+ * @author Caolp
+ */
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
+@Path("/customer")
 public interface ICustomerService {
 
-    @RequestMapping(value = "save", method = RequestMethod.POST)
-    @ResponseBody
+    @POST
+    @Path("save")
     Customer save(Customer customer);
 
     /**
      * GET http://localhost:9005/customer/find-by-id?id=1
-     * @param id
-     * @return
+     * @link @QueryParam
+     * @link @PathParam
+     * @link @PathVariable
+     * @param id 用户标识
+     * @return 用户
      */
-    @RequestMapping(value = "find-by-id", method = RequestMethod.GET)
-    @ResponseBody
-    Customer findById(@RequestParam("id") Long id);
+    @GET
+    @Path("/find-by-id/{id : \\d+}")
+    Customer findById(@PathParam("id") Long id);
 
 }

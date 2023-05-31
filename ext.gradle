@@ -4,4 +4,5 @@ ext {
     springCloudVersion = '2021.0.4'
     mysqlConnectorVersion = '8.0.30'
     lombokVersion = '1.18.12'
+    mockitoVersion = '2.23.4'
 }
