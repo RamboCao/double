@@ -1,0 +1,25 @@
+package com.star.customer.api;
+
+import com.star.customer.dao.CustomerRepository;
+import com.star.customer.domain.Customer;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
+
+/**
+ * @author Caolp
+ */
+@Service
+public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTrxPropagation{
+
+    @Resource
+    private CustomerRepository customerRepository;
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void addRequired(Customer customer) {
+        customerRepository.save(customer);
+    }
+}
