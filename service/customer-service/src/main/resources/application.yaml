@@ -15,3 +15,5 @@ spring:
     servlet:
       load-on-startup: 1
     init: {jersey.config.beanValidation.enableOutputValidationErrorEntity.server: true}
+  jpa:
+    show-sql: true

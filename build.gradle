@@ -83,7 +83,7 @@ subprojects.each {
     if (it.name.endsWith('-ui')) {
         all_ui_subject << it
     }
-    if (it.subprojects.empty && it.name.endsWith('-service') && !it.name.startsWith('api-')) {
+    if (it.subprojects.empty && (it.name.endsWith('-service') && !it.name.startsWith('api-')) || it.name.startsWith("open-ai")) {
         all_service_subject << it
     }
     if (it.name.endsWith('-api')) {
@@ -118,6 +118,9 @@ configure(all_service_subject){
         //lombok
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        // 引入测试模块
+        testCompile unitTest
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
 
     }
 }
