@@ -21,4 +21,10 @@ public interface ISubscriberServiceWithTrxPropagation {
     @Path("subscriber-add-required-exception")
     void addRequiredException(Subscriber subscriber);
 
+    @Path("subscriber-add-requires-new")
+    void addRequiresNew(Subscriber subscriber);
+
+    @Path("subscriber-add-requires-new-exception")
+    void addRequiresNewException(Subscriber subscriber);
+
 }

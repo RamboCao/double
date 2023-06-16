@@ -20,5 +20,6 @@ public interface ICustomerServiceWithTrxPropagation {
     void addRequired(Customer customer);
 
 
-
+    @Path("add-requires-new")
+    void addRequiresNew(Customer customer);
 }

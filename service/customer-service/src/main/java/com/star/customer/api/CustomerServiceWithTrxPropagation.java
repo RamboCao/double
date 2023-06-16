@@ -22,4 +22,10 @@ public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTr
     public void addRequired(Customer customer) {
         customerRepository.save(customer);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
+    public void addRequiresNew(Customer customer) {
+        customerRepository.save(customer);
+    }
 }

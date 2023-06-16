@@ -3,6 +3,7 @@ package com.star.customer;
 import com.star.customer.api.CustomerServiceWithTrx;
 import com.star.customer.api.IMultiThreadTrxService;
 import com.star.customer.manager.TransactionPropagationRequiredManager;
+import com.star.customer.manager.TransactionPropagationRequiresNewManager;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class CustomerServiceTrxTest {
 
     @Autowired
     private TransactionPropagationRequiredManager transactionPropagationRequiredManager;
+
+    @Autowired
+    private TransactionPropagationRequiresNewManager transactionPropagationRequiresNewManager;
 
     @Test
     public void testPrivateMethod() throws Exception {
@@ -61,5 +65,28 @@ public class CustomerServiceTrxTest {
         transactionPropagationRequiredManager.transactionRequiredRequiredExceptionTry();
     }
 
+    @Test
+    public void testNoTransactionExceptionRequiresNewRequiresNew(){
+        transactionPropagationRequiresNewManager.noTransactionExceptionRequiresNewRequiresNew();
+    }
 
+    @Test
+    public void testNoTransactionRequiresNewRequiresNewException(){
+        transactionPropagationRequiresNewManager.noTransactionRequiresNewRequiresNewException();
+    }
+
+    @Test
+    public void testTransactionExceptionRequiresNewRequireNew(){
+        transactionPropagationRequiresNewManager.transactionExceptionRequiresNewRequireNew();
+    }
+
+    @Test
+    public void testTransactionRequiredRequiresNewRequiresNewException(){
+        transactionPropagationRequiresNewManager.transactionRequiredRequiresNewRequiresNewException();
+    }
+
+    @Test
+    public void testTransactionRequiredRequiresNewRequiresNewExceptionTry(){
+        transactionPropagationRequiresNewManager.transactionRequiredRequiresNewRequiresNewExceptionTry();
+    }
 }

@@ -72,6 +72,7 @@ public class TransactionPropagationRequiredManager {
     /**
      * 外围方法开启事务，内部方法加入外围方法事务，内部方法抛出异常回滚，即使方法被 catch 不被外围方法感知，整个事务都会回滚
      * 客户、用户均未插入
+     * Transaction silently rolled back because it has been marked as rollback-only
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void transactionRequiredRequiredExceptionTry(){
