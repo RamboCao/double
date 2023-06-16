@@ -27,4 +27,10 @@ public interface ISubscriberServiceWithTrxPropagation {
     @Path("subscriber-add-requires-new-exception")
     void addRequiresNewException(Subscriber subscriber);
 
+    @Path("subscriber-add-nested")
+    void addNested(Subscriber subscriber);
+
+    @Path("subscriber-add-nested-exception")
+    void addNestedException(Subscriber subscriber);
+
 }

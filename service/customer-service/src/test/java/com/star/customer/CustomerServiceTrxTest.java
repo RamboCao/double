@@ -2,6 +2,7 @@ package com.star.customer;
 
 import com.star.customer.api.CustomerServiceWithTrx;
 import com.star.customer.api.IMultiThreadTrxService;
+import com.star.customer.manager.TransactionPropagationNestedManager;
 import com.star.customer.manager.TransactionPropagationRequiredManager;
 import com.star.customer.manager.TransactionPropagationRequiresNewManager;
 import org.junit.Test;
@@ -24,6 +25,9 @@ public class CustomerServiceTrxTest {
 
     @Autowired
     private TransactionPropagationRequiresNewManager transactionPropagationRequiresNewManager;
+
+    @Autowired
+    private TransactionPropagationNestedManager transactionPropagationNestedManager;
 
     @Test
     public void testPrivateMethod() throws Exception {
@@ -89,4 +93,31 @@ public class CustomerServiceTrxTest {
     public void testTransactionRequiredRequiresNewRequiresNewExceptionTry(){
         transactionPropagationRequiresNewManager.transactionRequiredRequiresNewRequiresNewExceptionTry();
     }
+
+    @Test
+    public void testNoTransactionExceptionNestedNested(){
+        transactionPropagationNestedManager.noTransactionExceptionNestedNested();
+    }
+
+    @Test
+    public void testNoTransactionNestedNestedException(){
+        transactionPropagationNestedManager.noTransactionNestedNestedException();
+    }
+
+    @Test
+    public void testTransactionExceptionNestedNested(){
+        transactionPropagationNestedManager.transactionExceptionNestedNested();
+    }
+
+    @Test
+    public void testTransactionNestedNestedException(){
+        transactionPropagationNestedManager.transactionNestedNestedException();
+    }
+
+    @Test
+    public void testTransactionNestedNestedExceptionTry(){
+        transactionPropagationNestedManager.transactionNestedNestedExceptionTry();
+    }
+
+
 }

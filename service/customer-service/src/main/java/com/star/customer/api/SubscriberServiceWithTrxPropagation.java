@@ -42,4 +42,17 @@ public class SubscriberServiceWithTrxPropagation implements ISubscriberServiceWi
         subscriberRepository.save(subscriber);
         throw new RuntimeException();
     }
+
+    @Override
+    @Transactional(propagation = Propagation.NESTED, rollbackFor = Exception.class)
+    public void addNested(Subscriber subscriber) {
+        subscriberRepository.save(subscriber);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NESTED, rollbackFor = Exception.class)
+    public void addNestedException(Subscriber subscriber) {
+        subscriberRepository.save(subscriber);
+        throw new RuntimeException();
+    }
 }

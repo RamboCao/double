@@ -22,4 +22,7 @@ public interface ICustomerServiceWithTrxPropagation {
 
     @Path("add-requires-new")
     void addRequiresNew(Customer customer);
+
+    @Path("add-nested")
+    void addNested(Customer customer);
 }
