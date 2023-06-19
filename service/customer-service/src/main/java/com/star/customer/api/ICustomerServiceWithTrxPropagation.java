@@ -25,4 +25,7 @@ public interface ICustomerServiceWithTrxPropagation {
 
     @Path("add-nested")
     void addNested(Customer customer);
+
+    @Path("add-mandatory")
+    void addMandatory(Customer customer);
 }

@@ -34,4 +34,10 @@ public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTr
     public void addNested(Customer customer){
         customerRepository.save(customer);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY, rollbackFor = Exception.class)
+    public void addMandatory(Customer customer) {
+        customerRepository.save(customer);
+    }
 }

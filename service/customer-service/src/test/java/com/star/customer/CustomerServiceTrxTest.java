@@ -2,6 +2,7 @@ package com.star.customer;
 
 import com.star.customer.api.CustomerServiceWithTrx;
 import com.star.customer.api.IMultiThreadTrxService;
+import com.star.customer.manager.TransactionPropagationMandatoryManager;
 import com.star.customer.manager.TransactionPropagationNestedManager;
 import com.star.customer.manager.TransactionPropagationRequiredManager;
 import com.star.customer.manager.TransactionPropagationRequiresNewManager;
@@ -28,6 +29,9 @@ public class CustomerServiceTrxTest {
 
     @Autowired
     private TransactionPropagationNestedManager transactionPropagationNestedManager;
+
+    @Autowired
+    private TransactionPropagationMandatoryManager transactionPropagationMandatoryManager;
 
     @Test
     public void testPrivateMethod() throws Exception {
@@ -119,5 +123,28 @@ public class CustomerServiceTrxTest {
         transactionPropagationNestedManager.transactionNestedNestedExceptionTry();
     }
 
+    @Test
+    public void testNoTransactionExceptionMandatoryMandatory(){
+        transactionPropagationMandatoryManager.noTransactionExceptionMandatoryMandatory();
+    }
 
+    @Test
+    public void testNoTransactionMandatoryMandatoryException(){
+        transactionPropagationMandatoryManager.noTransactionMandatoryMandatoryException();
+    }
+
+    @Test
+    public void testTransactionExceptionMandatoryMandatory(){
+        transactionPropagationMandatoryManager.transactionExceptionMandatoryMandatory();
+    }
+
+    @Test
+    public void testTransactionMandatoryMandatoryException(){
+        transactionPropagationMandatoryManager.transactionMandatoryMandatoryException();
+    }
+
+    @Test
+    public void testTransactionMandatoryMandatoryExceptionTry(){
+        transactionPropagationMandatoryManager.transactionMandatoryMandatoryExceptionTry();
+    }
 }
