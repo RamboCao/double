@@ -2,10 +2,7 @@ package com.star.customer;
 
 import com.star.customer.api.CustomerServiceWithTrx;
 import com.star.customer.api.IMultiThreadTrxService;
-import com.star.customer.manager.TransactionPropagationMandatoryManager;
-import com.star.customer.manager.TransactionPropagationNestedManager;
-import com.star.customer.manager.TransactionPropagationRequiredManager;
-import com.star.customer.manager.TransactionPropagationRequiresNewManager;
+import com.star.customer.manager.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +29,9 @@ public class CustomerServiceTrxTest {
 
     @Autowired
     private TransactionPropagationMandatoryManager transactionPropagationMandatoryManager;
+
+    @Autowired
+    private TransactionPropagationSupportsManager transactionPropagationSupportsManager;
 
     @Test
     public void testPrivateMethod() throws Exception {
@@ -147,4 +147,30 @@ public class CustomerServiceTrxTest {
     public void testTransactionMandatoryMandatoryExceptionTry(){
         transactionPropagationMandatoryManager.transactionMandatoryMandatoryExceptionTry();
     }
+
+    @Test
+    public void testNoTransactionExceptionSupportsSupports(){
+        transactionPropagationSupportsManager.noTransactionExceptionSupportsSupports();
+    }
+
+    @Test
+    public void testNoTransactionSupportsSupportsException(){
+        transactionPropagationSupportsManager.noTransactionSupportsSupportsException();
+    }
+
+    @Test
+    public void testTransactionExceptionSupportsSupports(){
+        transactionPropagationSupportsManager.transactionExceptionSupportsSupports();
+    }
+
+    @Test
+    public void testTransactionSupportsSupportsException(){
+        transactionPropagationSupportsManager.transactionSupportsSupportsException();
+    }
+
+    @Test
+    public void testTransactionSupportsSupportsExceptionTry(){
+        transactionPropagationSupportsManager.transactionSupportsSupportsExceptionTry();
+    }
+
 }

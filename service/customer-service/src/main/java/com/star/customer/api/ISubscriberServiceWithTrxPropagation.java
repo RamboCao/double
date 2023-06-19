@@ -39,4 +39,10 @@ public interface ISubscriberServiceWithTrxPropagation {
     @Path("subscriber-add-mandatory-exception")
     void addMandatoryException(Subscriber subscriber);
 
+    @Path("subscriber-add-supports")
+    void addSupports(Subscriber subscriber);
+
+    @Path("subscriber-add-supports-exception")
+    void addSupportsException(Subscriber subscriber);
+
 }

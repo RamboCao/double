@@ -69,4 +69,17 @@ public class SubscriberServiceWithTrxPropagation implements ISubscriberServiceWi
         throw new RuntimeException();
     }
 
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+    public void addSupports(Subscriber subscriber) {
+        subscriberRepository.save(subscriber);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+    public void addSupportsException(Subscriber subscriber){
+        subscriberRepository.save(subscriber);
+        throw new RuntimeException();
+    }
+
 }

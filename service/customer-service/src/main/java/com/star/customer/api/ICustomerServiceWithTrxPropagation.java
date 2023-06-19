@@ -28,4 +28,7 @@ public interface ICustomerServiceWithTrxPropagation {
 
     @Path("add-mandatory")
     void addMandatory(Customer customer);
+
+    @Path("add-supports")
+    void addSupports(Customer customer);
 }

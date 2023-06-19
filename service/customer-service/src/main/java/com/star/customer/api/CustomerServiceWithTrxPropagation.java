@@ -40,4 +40,12 @@ public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTr
     public void addMandatory(Customer customer) {
         customerRepository.save(customer);
     }
+
+    @Override
+    @Transactional(propagation = Propagation.SUPPORTS, rollbackFor = Exception.class)
+    public void addSupports(Customer customer) {
+        customerRepository.save(customer);
+    }
+
+
 }
