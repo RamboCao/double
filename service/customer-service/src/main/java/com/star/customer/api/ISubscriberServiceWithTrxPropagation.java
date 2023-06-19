@@ -45,4 +45,9 @@ public interface ISubscriberServiceWithTrxPropagation {
     @Path("subscriber-add-supports-exception")
     void addSupportsException(Subscriber subscriber);
 
+    @Path("subscirber-add-never")
+    void addNever(Subscriber subscriber);
+
+    @Path("subscriber-add-never-exception")
+    void addNeverException(Subscriber subscriber);
 }

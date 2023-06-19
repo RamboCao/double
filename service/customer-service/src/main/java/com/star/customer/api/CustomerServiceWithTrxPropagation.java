@@ -47,5 +47,10 @@ public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTr
         customerRepository.save(customer);
     }
 
+    @Override
+    @Transactional(propagation = Propagation.NEVER, rollbackFor = Exception.class)
+    public void addNever(Customer customer) {
+        customerRepository.save(customer);
+    }
 
 }

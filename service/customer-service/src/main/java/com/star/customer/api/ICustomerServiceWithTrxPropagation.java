@@ -31,4 +31,7 @@ public interface ICustomerServiceWithTrxPropagation {
 
     @Path("add-supports")
     void addSupports(Customer customer);
+
+    @Path("add-never")
+    void addNever(Customer customer);
 }
