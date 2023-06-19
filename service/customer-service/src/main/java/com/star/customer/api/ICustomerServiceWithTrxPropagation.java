@@ -5,6 +5,7 @@ import com.star.customer.domain.Subscriber;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -17,7 +18,7 @@ import javax.ws.rs.core.MediaType;
 public interface ICustomerServiceWithTrxPropagation {
 
     @Path("add-required")
-    void addRequired(Customer customer);
+    Customer addRequired(Customer customer);
 
 
     @Path("add-requires-new")
@@ -34,4 +35,10 @@ public interface ICustomerServiceWithTrxPropagation {
 
     @Path("add-never")
     void addNever(Customer customer);
+
+    @Path("get/{id : \\d+}")
+    Customer getCustomerById(@PathParam("id") Long id);
+
+    @Path("get-not-supported/{id : \\d+}")
+    Customer getCustomerByIdNotSupported(@PathParam("id") Long id);
 }

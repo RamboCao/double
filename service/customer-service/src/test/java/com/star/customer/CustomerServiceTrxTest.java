@@ -36,6 +36,9 @@ public class CustomerServiceTrxTest {
     @Autowired
     private TransactionPropagationNeverManager transactionPropagationNeverManager;
 
+    @Autowired
+    private TransactionPropagationNotSupportedManager transactionPropagationNotSupportedManager;
+
     @Test
     public void testPrivateMethod() throws Exception {
         serviceWithTrx.saveWithCustomizePropagationException();
@@ -189,5 +192,30 @@ public class CustomerServiceTrxTest {
     @Test
     public void testTransactionExceptionNeverNever(){
         transactionPropagationNeverManager.transactionExceptionNeverNever();
+    }
+
+    @Test
+    public void testNoTransactionExceptionRequiredNotSupported(){
+        transactionPropagationNotSupportedManager.noTransactionExceptionRequiredNotSupported();
+    }
+
+    @Test
+    public void testNoTransactionRequiredNotSupportedException(){
+        transactionPropagationNotSupportedManager.noTransactionRequiredNotSupportedException();
+    }
+
+    @Test
+    public void testTransactionExceptionRequiredNotSupported(){
+        transactionPropagationNotSupportedManager.transactionExceptionRequiredNotSupported();
+    }
+
+    @Test
+    public void testTransactionRequiredNotSupportedException(){
+        transactionPropagationNotSupportedManager.transactionRequiredNotSupportedException();
+    }
+
+    @Test
+    public void testTransactionRequiredNotSupportedGet(){
+        transactionPropagationNotSupportedManager.transactionRequiredNotSupportedGet();
     }
 }

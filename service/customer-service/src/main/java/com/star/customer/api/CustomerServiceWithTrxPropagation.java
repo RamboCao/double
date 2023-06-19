@@ -19,8 +19,8 @@ public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTr
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public void addRequired(Customer customer) {
-        customerRepository.save(customer);
+    public Customer addRequired(Customer customer) {
+        return customerRepository.save(customer);
     }
 
     @Override
@@ -52,5 +52,18 @@ public class CustomerServiceWithTrxPropagation implements ICustomerServiceWithTr
     public void addNever(Customer customer) {
         customerRepository.save(customer);
     }
+
+    @Override
+    public Customer getCustomerById(Long id) {
+        return customerRepository.findById(id).orElse(null);
+
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.NOT_SUPPORTED,readOnly=true)
+    public Customer getCustomerByIdNotSupported(Long id) {
+        return customerRepository.findById(id).orElse(null);
+    }
+
 
 }
