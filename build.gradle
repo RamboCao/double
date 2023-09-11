@@ -106,6 +106,8 @@ configure(all_service_subject){
         implementation "org.springframework.boot:spring-boot-starter-actuator"
         implementation 'org.springframework.cloud:spring-cloud-context'
         implementation 'org.springframework.boot:spring-boot-starter-jersey'
+        runtimeOnly group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.6'
+       
         // 引入 openfeign
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

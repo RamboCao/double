@@ -9,7 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @author Caolp
  */
 @Slf4j
-public class StartApp {
+public class BeanLifeCycleStartApp {
     public static void main(String[] args) {
         log.info("Init application context");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.star.customer.life.cycle");
