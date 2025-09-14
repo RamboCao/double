@@ -1,4 +1,9 @@
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter-jersey"
+    implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.6'
+    implementation("com.google.guava:guava:28.1-jre")
+    //lombok
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
 
 }

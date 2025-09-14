@@ -1,0 +1,58 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasource.druid.master.url",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.master.url."
+    },
+    {
+      "name": "spring.datasource.druid.master.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.master.username."
+    },
+    {
+      "name": "spring.datasource.druid.master.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.master.password."
+    },
+    {
+      "name": "spring.datasource.druid.master.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.master.driver-class-name."
+    },
+    {
+      "name": "spring.datasource.druid.master.type",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.master.type."
+    },
+    {
+      "name": "spring.datasource.druid.slave.url",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.url."
+    },
+    {
+      "name": "spring.datasource.druid.slave.username",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.username."
+    },
+    {
+      "name": "spring.datasource.druid.slave.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.password."
+    },
+    {
+      "name": "spring.datasource.druid.slave.type",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.type."
+    },
+    {
+      "name": "spring.datasource.druid.slave.driver-class-name",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.driver-class-name."
+    },
+    {
+      "name": "spring.datasource.druid.slave.platform",
+      "type": "java.lang.String",
+      "description": "Description for spring.datasource.druid.slave.platform."
+    }
+  ] }

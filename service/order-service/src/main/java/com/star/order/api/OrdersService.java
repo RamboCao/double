@@ -1,5 +1,7 @@
 package com.star.order.api;
 
+import com.star.order.config.DataSourceNames;
+import com.star.order.config.annotation.RoutingDataSource;
 import com.star.order.dao.OrdersRepository;
 import com.star.order.domain.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,7 @@ public class OrdersService implements IOrdersService {
     }
 
     @Override
+    @RoutingDataSource(routeKey = DataSourceNames.MASTER)
     public Orders findById(Long id) {
         return ordersRepository.findById(id).orElse(null);
     }

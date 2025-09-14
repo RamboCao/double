@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.geo.Point;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -38,6 +39,9 @@ public class CustomerServiceTrxTest {
 
     @Autowired
     private TransactionPropagationNotSupportedManager transactionPropagationNotSupportedManager;
+
+    @Autowired
+    private TransactionTemplateManager transactionTemplateManager;
 
     @Test
     public void testPrivateMethod() throws Exception {
@@ -217,5 +221,17 @@ public class CustomerServiceTrxTest {
     @Test
     public void testTransactionRequiredNotSupportedGet(){
         transactionPropagationNotSupportedManager.transactionRequiredNotSupportedGet();
+    }
+
+    @Test
+    public void testPlatformTransactionManager(){
+        transactionTemplateManager.platformTransactionManager();
+    }
+
+    @Test
+    public void testPoint(){
+        var point = new Point(100.0, 200.0);
+        System.out.println(point.toString());
+
     }
 }

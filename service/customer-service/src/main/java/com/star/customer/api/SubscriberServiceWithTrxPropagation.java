@@ -27,7 +27,11 @@ public class SubscriberServiceWithTrxPropagation implements ISubscriberServiceWi
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
     public void addRequiredException(Subscriber subscriber) {
         subscriberRepository.save(subscriber);
-        throw new RuntimeException();
+        try {
+            throw new RuntimeException();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

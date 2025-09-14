@@ -6,6 +6,8 @@ ext {
     lombokVersion = '1.18.12'
     mockitoVersion = '2.23.4'
     junitVersion = '4.12'
+    oracleConnectorVersion ='19.21.0.0'
+    kafkaVersion = 'kafka_2.13:2.8.1'
 
     unitTest = [
             "junit:junit:${junitVersion}",
